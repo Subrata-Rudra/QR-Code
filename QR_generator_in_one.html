@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>QR Creator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        font-family: "Supermercado One", cursive;
+        background-color: rgb(124, 240, 228);
+      }
+      .heading {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        color: rgb(14, 6, 131);
+      }
+      .qr-box {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-row-gap: 10px;
+      }
+      img {
+        height: 300px;
+        width: 300px;
+        padding: 1rem;
+        border: 2px solid #01330c;
+        border-radius: 0.5rem;
+        grid-column: 1/-1;
+      }
+      textarea {
+        font-size: 20px;
+        outline: none;
+        height: 100px;
+        padding: 1rem;
+        border: 2px solid #09db8b;
+        border-radius: 0.5rem;
+        grid-column: 1/-1;
+      }
+      #qBtn {
+        color: white;
+        font-size: 20px;
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        background-color: #06626e;
+        border-radius: 2rem;
+        transition: background-color 0.2s;
+      }
+      #qBtn:hover {
+        background-color: #eb365a;
+        cursor: pointer;
+      }
+      .download {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-row-gap: 10px;
+      }
+      #dwnldBtn {
+        color: white;
+        font-size: 20px;
+        padding: 0.5rem 1rem;
+        margin-top: 8px;
+        border: none;
+        outline: none;
+        background-color: #076404;
+        border-radius: 2rem;
+        transition: background-color 0.2s;
+      }
+      #dwnldBtn:hover {
+        background-color: #7c0808;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Create Your QR Code</h1>
+    </div>
+    <div class="qr-box">
+      <div id="imgDiv"><img src="https://static.vecteezy.com/system/resources/previews/004/699/980/original/qr-code-glyph-two-color-icon-vector.jpg" alt="qr-code" /></div>
+      <textarea
+        placeholder="Enter the text of which you want to create QR code..."
+      ></textarea>
+      <button id="qBtn">Generate QR Code</button>
+    </div>
+    <div class="download">
+      <button id="dwnldBtn">Download QR Code</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script>
+      let qrCode = document.querySelector("img");
+      let qrText = document.querySelector("textarea");
+      let qrBtn = document.querySelector("button");
+      // let dwnBtn = document.querySelector("dwnldBtn");
+
+      qrBtn.addEventListener("click", generateQR);
+      // dwnBtn.addEventListener('click', downloadFile(url, "QR-Code"));
+
+      function generateQR() {
+        let size = "1000x1000";
+        let data = qrText.value;
+        let baseURL = "http://api.qrserver.com/v1/create-qr-code/";
+
+        let url = `${baseURL}?data=${data}&size=${size}`;
+
+        qrCode.src = url;
+      }
+
+      //Usng filesaver.js and dom-to-image.js to take the screenshot of the QR Code image and make it downloadable
+      $(document).ready(function () {
+        $("#dwnldBtn").click(function () {
+          domtoimage
+            .toBlob(document.getElementById("imgDiv"))
+            .then(function (blob) {
+              window.saveAs(blob, "QR-Code.png");
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

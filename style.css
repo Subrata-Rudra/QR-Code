@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Supermercado One', cursive;
+    background-color: rgb(124, 240, 228);
+}
+.heading{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: rgb(14, 6, 131);
+}
+.qr-box{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-row-gap: 10px;
+}
+img{
+    height: 300px;
+    width: 300px;
+    padding: 1rem;
+    border: 2px solid #01330c;
+    border-radius: 0.5rem;
+    grid-column: 1/-1;
+}
+textarea{
+    font-size: 20px;
+    outline: none;
+    height: 100px;
+    padding: 1rem;
+    border: 2px solid #09db8b;
+    border-radius: 0.5rem;
+    grid-column: 1/-1;
+}
+#qBtn{
+    color: white;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    background-color: #06626e;
+    border-radius: 2rem;
+    transition: background-color 0.2s;
+}
+#qBtn:hover{
+    background-color: #eb365a;
+    cursor: pointer;
+}
+.download{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-row-gap: 10px;
+}
+#dwnldBtn{
+    color: white;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    margin-top: 8px;
+    border: none;
+    outline: none;
+    background-color: #076404;
+    border-radius: 2rem;
+    transition: background-color 0.2s;
+}
+#dwnldBtn:hover{
+    background-color: #7c0808;
+    cursor: pointer;
+}

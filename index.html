@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>QR Code Generator</title>
+</head>
+<body>
+    <div class="heading">
+        <h1>Create Your QR Code</h1>
+    </div>
+    <div class="qr-box">
+        <div id="imgDiv"><img src="default.jpg" alt="qr-code"></div>
+        <textarea placeholder="Enter the text of which you want to create QR code..."></textarea>
+        <button id="qBtn">Generate QR Code</button>
+    </div>
+    <div class="download">
+        <button id="dwnldBtn">Download QR Code</button>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
